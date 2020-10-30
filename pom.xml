@@ -88,6 +88,15 @@
             <artifactId>druid</artifactId>
             <version>1.1.9</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!--用到了redis 连接池，需要添加这个jar包-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
