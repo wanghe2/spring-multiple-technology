@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface EmployeeService {
     Employee getEmployeeByName(String name);
     List<Employee> getEmployeeListByDept(Integer dept);
+    void insert(Employee employee);
 }

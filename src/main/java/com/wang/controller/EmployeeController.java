@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +39,10 @@ public class EmployeeController {
     @RequestMapping(value = "/employee", method =  RequestMethod.POST)
     @ApiOperation(value = "新增员工信息",notes = "传递一个对象")
     public String addEmployee(Employee employee){
+        if(StringUtils.isEmpty(employee) || StringUtils.isEmpty(employee.getUsername())){
+            return "empty entity";
+        }
+        employeeService.insert(employee);
         return "add success";
     }
 
