@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/data")
-@Api("针对雇工信息进行增删改查")
+@Api(value="雇工",tags={"雇工信息接口的操作"})
 public class EmployeeController {
 
     @Autowired

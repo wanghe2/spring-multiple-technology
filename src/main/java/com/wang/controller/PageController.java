@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@Api("访问一些页面")
+@Api(value="页面",tags={"用户页面"})
 @RequestMapping("/page")
 public class PageController {
 
