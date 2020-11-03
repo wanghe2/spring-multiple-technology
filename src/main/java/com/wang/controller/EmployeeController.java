@@ -2,6 +2,7 @@ package com.wang.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.wang.bean.Employee;
+import com.wang.excption.MyException;
 import com.wang.service.EmployeeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -57,5 +58,12 @@ public class EmployeeController {
             return JSON.toJSONString(employeeList);
         }
         return "";
+    }
+
+    @RequestMapping(value = "/exception",method = RequestMethod.GET)
+    @ApiOperation(value = "全局异常" ,notes = "测试使用，这里抛出异常，会被统一处理")
+    public String getException() throws MyException {
+        int i = 5;
+        throw new MyException("全局异常");
     }
 }
