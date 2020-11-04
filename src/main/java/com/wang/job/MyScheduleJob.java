@@ -11,7 +11,7 @@ public class MyScheduleJob {
 
     private Logger logger = LoggerFactory.getLogger(MyScheduleJob.class);
 
-    @Scheduled(cron = "*/5 * * * * *")
+    @Scheduled(cron = "0 * */5 * * *")
     public void doJob(){
         logger.info("每5秒执行一次");
     }

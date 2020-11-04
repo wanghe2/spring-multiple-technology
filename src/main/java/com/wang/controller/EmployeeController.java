@@ -9,10 +9,13 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -23,6 +26,9 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @RequestMapping(value = "/employee",method = RequestMethod.GET)
     @ApiOperation(value = "获取员工信息",notes = "根据用户名称")
@@ -65,5 +71,13 @@ public class EmployeeController {
     public String getException() throws MyException {
         int i = 5;
         throw new MyException("全局异常");
+    }
+
+//    @ResponseBody
+    @RequestMapping(value = "/remoteAccess",method = RequestMethod.GET)
+    @ApiOperation(value = "远程访问",notes = "restTemplate方式")
+    public String remoteAccess(){
+        ResponseEntity<String> data= restTemplate.getForEntity("https://api.yuedu.pro/book/_search?keyword=java&pn=1&ps=10",String.class);
+        return "获取的内容"+data.getBody();
     }
 }
